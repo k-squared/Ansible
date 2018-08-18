@@ -1,7 +1,7 @@
 ---
 - hosts: web
   remote_user: ubuntu
-  sudo: yes
+  become: yes
 
   tasks:
   - name: Install Apache
@@ -12,7 +12,7 @@
 
 - hosts: db
   remote_user: ubuntu
-  sudo: yes
+  become: yes
 
   tasks:
   - name: Install MariaDB Server
