@@ -1,0 +1,23 @@
+---
+- hosts: web
+  remote_user: ubuntu
+  sudo: yes
+
+  tasks:
+  - name: Install Apache
+    apt: name=apache2 state=present
+
+  - name: Start Apache Services
+    service: name=apache2 state=started enabled=true
+
+- hosts: db
+  remote_user: ubuntu
+  sudo: yes
+
+  tasks:
+  - name: Install MariaDB Server
+    apt: name=mariadb-server state=present
+
+  - name: Start MySQL Services
+    service: name=mysql state=started enabled=true
+
