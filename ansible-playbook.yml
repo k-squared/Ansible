@@ -24,9 +24,9 @@
   - name: Copy Site Files
     template: src=templates/index.j2 dest={{ doc_root }}/index.html
 
-    handlers:
-      - name: Restart Apache
-        service: name=apache2 state=restarted
+  handlers:
+    - name: Restart Apache
+      service: name=apache2 state=restarted
         
 - hosts: db
   remote_user: ubuntu
