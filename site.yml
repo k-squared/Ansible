@@ -2,5 +2,5 @@
 - hosts: all
   become: yes
 
-- include: web.yml
-- include: db.yml
+- include: web.yml tags=web
+- include: db.yml tags=db
