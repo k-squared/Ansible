@@ -1,42 +1,42 @@
----
-- hosts: web
-  remote_user: ubuntu
-  become: yes
-  vars:
-    http_port: 80
-    doc_dir: /ansible/
-    doc_root: /var/www/html/ansible/
-    max_clients: 5
+# ---
+# - hosts: web
+#   remote_user: ubuntu
+#   become: yes
+#   vars:
+#     http_port: 80
+#     doc_dir: /ansible/
+#     doc_root: /var/www/html/ansible/
+#     max_clients: 5
 
-  tasks:
-  - name: Install Apache
-    apt: name=apache2 state=present
-    when: ansible_os_family == "Debian"
+#   tasks:
+#   - name: Install Apache
+#     apt: name=apache2 state=present
+#     when: ansible_os_family == "Debian"
 
-  - name: Start Apache Services
-    service: name=apache2 state=started enabled=true
+#   - name: Start Apache Services
+#     service: name=apache2 state=started enabled=true
 
-  - name: Deploy Apache Configuration File
-    template: src=templates/apache2.j2 dest=/etc/apache2/apache2.conf
-    notify:
-      - Restart Apache
+#   - name: Deploy Apache Configuration File
+#     template: src=templates/apache2.j2 dest=/etc/apache2/apache2.conf
+#     notify:
+#       - Restart Apache
 
-  - name: Copy Site Files
-    template: src=templates/index.j2 dest={{ doc_root }}/index.html
+#   - name: Copy Site Files
+#     template: src=templates/index.j2 dest={{ doc_root }}/index.html
 
-  handlers:
-    - name: Restart Apache
-      service: name=apache2 state=restarted
+#   handlers:
+#     - name: Restart Apache
+#       service: name=apache2 state=restarted
         
-- hosts: db
-  remote_user: ubuntu
-  become: yes
+# - hosts: db
+#   remote_user: ubuntu
+#   become: yes
 
-  tasks:
-  - name: Install MariaDB Server
-    apt: name=mariadb-server state=present
-    when: ansible_os_family == "Debian"
+#   tasks:
+#   - name: Install MariaDB Server
+#     apt: name=mariadb-server state=present
+#     when: ansible_os_family == "Debian"
 
-  - name: Start MySQL Services
-    service: name=mysql state=started enabled=true
+#   - name: Start MySQL Services
+#     service: name=mysql state=started enabled=true
 
