@@ -1,0 +1,15 @@
+---
+- name: Install Apache
+  apt: name=apache2 state=present
+  when: ansible_os_family == "Debian"
+
+- name: Start Apache Services
+  service: name=apache2 state=started enabled=true
+
+- name: Deploy Apache Configuration File
+  template: src=apache2.j2 dest=/etc/apache2/apache2.conf
+  notify:
+    - Restart Apache
+
+- name: Copy Site Files
+  template: src=index.j2 dest={{ doc_root }}/index.html
