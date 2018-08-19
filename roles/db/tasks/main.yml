@@ -1,0 +1,7 @@
+---
+- name: Install MariaDB Server
+  apt: name=mariadb-server state=present
+  when: ansible_os_family == "Debian"
+
+- name: Start MySQL Services
+  service: name=mysql state=started enabled=true
