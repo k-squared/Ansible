@@ -26,6 +26,7 @@
 - name: do a thing
   uri:
     url: https://derpops.bike
+    validate_certs: no
   register: derpops
 
 - name: show derpops
