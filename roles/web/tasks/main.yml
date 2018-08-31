@@ -36,3 +36,8 @@
 - name: show a complex hash
   debug:
     var: ansible_default_ipv4.address
+  register: server_ip
+
+- name: show the ip address of the server
+  debug:
+    var: server_ip
