@@ -35,4 +35,4 @@
 
 - name: show a complex hash
   debug:
-    var: ansible_default_ipv4
+    var: ansible_default_ipv4.address
