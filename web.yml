@@ -3,4 +3,4 @@
   become: yes
   roles:
     - web
-    - geerlingguy.docker
+    - angstwad.docker_ubuntu
