@@ -22,3 +22,12 @@
   template: 
     src: index.j2 
     dest: "{{ doc_root }}/index.html"
+
+- name: do a thing
+  uri:
+    url: https://derpops.bike
+  register: derpops
+
+- name: show derpops
+  debug:
+    msg: "derpops value is {{ derpops }}"
