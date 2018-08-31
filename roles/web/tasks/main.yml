@@ -31,4 +31,4 @@
 
 - name: show derpops
   debug:
-    msg: "derpops value is {{ derpops }}"
+    var: derpops.status
